@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .quiz-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        .question {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result, .score {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .score {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>School Quiz</h1>
+        <form id="quizForm">
+            <div class="question">
+                <label for="favFriend">Who is your favorite friend?</label>
+                <input type="text" id="favFriend" required>
+            </div>
+
+            <div class="question">
+                <label for="schoolCrush">Who was your school crush?</label>
+                <input type="text" id="schoolCrush" required>
+            </div>
+
+            <div class="question">
+                <label for="classCrush">Who was your class crush?</label>
+                <input type="text" id="classCrush" required>
+            </div>
+
+            <div class="question">
+                <label for="wantedDate">A guy you wanted to date?</label>
+                <input type="text" id="wantedDate" required>
+            </div>
+
+            <div class="question">
+                <label for="favMoment">Your favorite school moment?</label>
+                <input type="text" id="favMoment" required>
+            </div>
+
+            <div class="question">
+                <label for="bestCouple">Best couple you imagine?</label>
+                <input type="text" id="bestCouple" required>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="result" class="result" style="display: none;">
+            <h2>Congratulations!</h2>
+            <p>Your responses match!</p>
+        </div>
+
+        <div id="score" class="score" style="display: none;">
+            <h3>Your score: <span id="scoreValue"></span> / 10</h3>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('quizForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const favFriend = document.getElementById('favFriend').value;
+            const schoolCrush = document.getElementById('schoolCrush').value;
+            const classCrush = document.getElementById('classCrush').value;
+            const wantedDate = document.getElementById('wantedDate').value;
+            const favMoment = document.getElementById('favMoment').value;
+            const bestCouple = document.getElementById('bestCouple').value;
+
+            // Generate a random score out of 10
+            const score = Math.floor(Math.random() * 10) + 1;
+            
+            // Show score
+            document.getElementById('scoreValue').textContent = score;
+            document.getElementById('score').style.display = 'block';
+
+            // Log the data to the console
+            console.log('Favorite Friend:', favFriend);
+            console.log('School Crush:', schoolCrush);
+            console.log('Class Crush:', classCrush);
+            console.log('Wanted to Date:', wantedDate);
+            console.log('Favorite Moment:', favMoment);
+            console.log('Best Couple:', bestCouple);
+
+            // Randomly create a match scenario (just a placeholder for matching logic)
+            const randomMatch = Math.random() > 0.5;
+
+            if (randomMatch) {
+                document.getElementById('result').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
